@@ -2,6 +2,7 @@ const REPOS = [
   { owner: 'Yoddikko', repo: 'Automercatorum-Guardalezioni',           elementId: 'version-guardalezioni' },
   { owner: 'Yoddikko', repo: 'Automercatorum-Downloader-di-dispense',  elementId: 'version-downloader'    },
   { owner: 'Yoddikko', repo: 'Automercatorum-video-export',            elementId: 'version-videoexport'   },
+  { owner: 'Yoddikko', repo: 'Automercatorum-risposte-quiz',           elementId: 'version-quizanswers'   },
 ];
 
 async function fetchLatestRelease(owner, repo) {
