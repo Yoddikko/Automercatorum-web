@@ -26,17 +26,17 @@ const PLATFORM_PATTERNS = {
 };
 
 const PLATFORM_ICONS = {
-  // macOS — apple silhouette
+  // Simple Icons "apple" — clean Apple silhouette with bite + leaf.
   macos: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
-    '<path d="M16.5 2.5c.4 1.4-.5 2.7-1.4 3.6-.9.9-2.3 1.6-3.7 1.5-.4-1.4.4-2.7 1.4-3.7.9-.9 2.3-1.5 3.7-1.4zM20 17.5c-.7 1.6-1.7 3.4-3.2 3.4-1.4 0-1.9-.9-3.5-.9s-2.2.9-3.5.9c-1.5 0-2.5-1.6-3.2-3.2C5.3 14.6 4.7 9 7.6 6.7 8.7 5.8 9.9 5.4 11 5.4c1.4 0 2.2.9 3.4.9 1.1 0 1.9-.9 3.4-.9 1 0 2.1.4 3 1.2-2.6 1.5-2.2 5.3.7 6.5-.4 1.5-1 2.9-1.5 4.4z"/>' +
+    '<path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>' +
   '</svg>',
-  // Windows — four squares (modern logo)
+  // Simple Icons "windows11" — straight 2x2 squares (the modern logo).
   windows: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
-    '<path d="M3 5.4l8.2-1.1v8H3V5.4zM12.4 4.1l8.6-1.2v9.4h-8.6V4.1zM3 13.7h8.2v8L3 20.6v-6.9zM12.4 13.7H21V21l-8.6-1.2v-6.1z"/>' +
+    '<path d="M3.449 0L0 .691v10.379h11.05V0H3.449zm9.501 0v11.07H24V0H12.95zM0 12.93v10.379L3.449 24h7.601V12.93H0zm12.95 0V24h11.05V12.93H12.95z"/>' +
   '</svg>',
-  // Linux — penguin silhouette (simplified)
-  linux: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
-    '<path d="M12 2c-1.6 0-3 1.4-3 3 0 .9.4 1.7 1 2.2-.7.5-1.4 1.2-1.9 2.1-.6 1-.9 2.1-1 3.1-.1.9 0 1.7.1 2.2.1.6 0 1.1-.4 1.6-.9 1.1-1.3 2.1-1.3 2.7 0 .5.4.9 1 1 .3 0 .6 0 .8-.1 0 .4.2.7.4 1 .4.5 1 .8 1.6.8.5 0 1-.2 1.4-.5.4.3 1 .5 1.7.5h.1c.7 0 1.3-.2 1.7-.5.4.3.9.5 1.4.5.6 0 1.2-.3 1.6-.8.2-.3.4-.6.4-1 .2.1.5.1.8.1.6-.1 1-.5 1-1 0-.6-.4-1.6-1.3-2.7-.4-.5-.5-1-.4-1.6.1-.5.2-1.3.1-2.2-.1-1-.4-2.1-1-3.1-.5-.9-1.2-1.6-1.9-2.1.6-.5 1-1.3 1-2.2 0-1.6-1.4-3-3-3zm-1.5 5c.5 0 .9.4.9.9 0 .5-.4.9-.9.9s-.9-.4-.9-.9c0-.5.4-.9.9-.9zm3 0c.5 0 .9.4.9.9 0 .5-.4.9-.9.9s-.9-.4-.9-.9c0-.5.4-.9.9-.9zm-3 4.5c.4.6 1.1 1 1.8 1s1.4-.4 1.8-1c.4.4.7.9.7 1.5 0 .8-.5 1.5-1.2 1.5-.4 0-.7-.2-.9-.4-.3.3-.7.4-1.1.4-.4 0-.8-.1-1.1-.4-.2.2-.5.4-.9.4-.7 0-1.2-.7-1.2-1.5 0-.6.3-1.1.7-1.5z"/>' +
+  // FontAwesome 5 brands "linux" — proper Tux silhouette in 448x512 viewBox.
+  linux: '<svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true">' +
+    '<path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8 0 17.7 8.8 17.7 19.6 0 7.8-4.1 14.5-10 17.6-1.5-.7-3.1-1.4-4.9-2 1.1-1.4 3.1-2.9 3.1-5.1.1-5.1-3.9-9.1-8.8-9.1s-8.8 4.1-8.8 9.1c0 2.9 1.2 5 2.6 6.3-1.4.5-3.1 1.3-4.4 1.9-3.6-3.5-6.3-9.1-6.3-15.2 0-10.7 7.9-19.4 17.7-19.4l.1.3z"/>' +
   '</svg>',
 };
 
@@ -226,35 +226,6 @@ async function renderHero() {
   wireMenuToggle(toggle, menu);
 }
 
-/* ---------- CARDS wiring ---------- */
-async function renderCards() {
-  const cards = document.querySelectorAll(".tool-card");
-  await Promise.all(Array.from(cards).map(async (card) => {
-    const owner = card.dataset.owner;
-    const repo  = card.dataset.repo;
-    const release = await fetchLatestRelease(owner, repo);
-    const assets = buildAssetMap(release);
-    const version = release?.tag_name || "";
-
-    const primary = card.querySelector('[data-role="card-download"]');
-    const icon    = card.querySelector('[data-role="card-icon"]');
-    const meta    = card.querySelector('[data-role="card-meta"]');
-    const toggle  = card.querySelector('[data-role="card-toggle"]');
-    const menu    = card.querySelector('[data-role="card-menu"]');
-
-    renderDownload(card, {
-      release,
-      assets,
-      version,
-      defaultPlatform: detectPlatform(),
-      primaryRefs: { button: primary, icon, os: null, meta },
-      menuRefs: { menu },
-      fallbackRepoUrl: `https://github.com/${owner}/${repo}/releases/latest`,
-    });
-    wireMenuToggle(toggle, menu);
-  }));
-}
-
 /* ---------- footer year ---------- */
 function renderYear() {
   const el = document.getElementById("copyright-year");
@@ -264,5 +235,4 @@ function renderYear() {
 document.addEventListener("DOMContentLoaded", () => {
   renderYear();
   renderHero();
-  renderCards();
 });
