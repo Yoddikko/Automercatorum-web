@@ -1,0 +1,69 @@
+name: 🐛 Segnalazione errore
+description: Segnala un problema riscontrato in Automercatorum Tools
+title: "[Bug] "
+labels: ["bug", "tools"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Grazie per aiutarci a migliorare **Automercatorum Tools**.
+        Compila i campi qui sotto — più dettagli ci dai, più velocemente possiamo capire cosa non va.
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Strumento interessato
+      options:
+        - Dispense (PDF)
+        - Video (Export)
+        - Guarda lezioni
+        - Risposte quiz
+        - Login / generale
+        - Altro
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrizione
+      description: Cosa è successo? Cosa ti aspettavi succedesse?
+      placeholder: Quando clicco su "Scarica" non parte nulla…
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passi per riprodurre
+      description: Elenca i passi che portano al problema.
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: false
+  - type: input
+    id: version
+    attributes:
+      label: Versione dell'app
+      description: La trovi in basso al menù laterale o nelle release di GitHub.
+      placeholder: "1.2.0"
+    validations:
+      required: false
+  - type: dropdown
+    id: os
+    attributes:
+      label: Sistema operativo
+      options:
+        - macOS
+        - Windows
+        - Linux
+    validations:
+      required: true
+  - type: textarea
+    id: report-zip
+    attributes:
+      label: Report diagnostico (opzionale)
+      description: |
+        Se hai usato "Segnala un errore" dal menù dell'app, trovi uno zip nella cartella `~/Downloads/Automercatorum/reports/`.
+        Trascinalo qui per allegarlo (log sanitizzati, niente password o token).
+    validations:
+      required: false
