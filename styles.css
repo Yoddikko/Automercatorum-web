@@ -17,7 +17,12 @@ body {
   color: #991b1b;
   font-size: 12px;
   text-align: center;
-  padding: 7px 16px;
+  padding: 9px 16px;
+  line-height: 1.45;
+}
+
+.disclaimer strong {
+  font-weight: 700;
 }
 
 header {
@@ -264,6 +269,31 @@ main {
 
 .dl-item[aria-disabled="true"] .dl-item-meta {
   color: #a8a29e;
+}
+
+
+/* ----- legal note ----- */
+.legal-note {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin: 0 0 24px;
+}
+
+.legal-note h2 {
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #9a3412;
+}
+
+.legal-note ul {
+  margin-left: 18px;
+  color: #7c2d12;
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 /* ----- altri tool grid ----- */
