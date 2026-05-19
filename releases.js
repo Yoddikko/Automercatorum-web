@@ -201,7 +201,14 @@ async function renderHero() {
 
   const release = await fetchLatestRelease(owner, repo);
   const assets = buildAssetMap(release);
-  const version = release?.tag_name || "";
+
+  // The release is published with the rolling "latest" tag, so the actual
+  // version lives in the release name (e.g. "Automercatorum Tools v1.2.0").
+  // Fall back to tag_name on the off chance someone published with a
+  // semver tag instead.
+  const fromName = release?.name?.match(/v\d+(\.\d+){0,2}/);
+  const version = (fromName && fromName[0]) ||
+                  (release?.tag_name && release.tag_name !== "latest" ? release.tag_name : "");
 
   document.getElementById("hero-version").textContent = version || "";
 
