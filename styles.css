@@ -376,7 +376,7 @@ main {
 
 /* ----- contact ----- */
 .contact {
-  margin-top: 36px;
+  margin-top: 16px;
 }
 
 .contact-card {
@@ -399,11 +399,14 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .contact-icon svg {
   width: 22px;
   height: 22px;
+  max-width: 22px;
+  max-height: 22px;
 }
 
 .contact-body {
@@ -437,7 +440,7 @@ main {
 
 /* ----- support / Ko-fi ----- */
 .support {
-  margin-top: 16px;
+  margin-top: 36px;
 }
 
 .support-card {
