@@ -149,6 +149,20 @@ main {
   margin-top: 18px;
 }
 
+.hero-download-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.download-count {
+  margin: 18px 0 0;
+  font-size: 13px;
+  color: #a8a29e;
+  line-height: 1.45;
+}
+
 .btn-download {
   display: inline-flex;
   align-items: center;
@@ -744,6 +758,14 @@ footer {
   .hero-grid { grid-template-columns: 64px 1fr; gap: 16px; }
   .hero-logo { width: 64px; height: 64px; border-radius: 14px; }
   .hero-head h1 { font-size: 20px; }
+  .hero-download-row {
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .download-count {
+    width: 100%;
+    margin-top: 0;
+  }
   .grid { grid-template-columns: 1fr; }
   .dl-menu { min-width: 180px; }
   .support-card {
