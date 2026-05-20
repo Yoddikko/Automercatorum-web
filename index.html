@@ -41,45 +41,47 @@
             un'unica app desktop. <span class="hero-version" id="hero-version"></span>
           </p>
 
-          <div class="download" data-target="hero">
-            <a class="btn-download primary"
-               href="#" id="hero-download-primary" rel="noopener">
-              <span class="dl-icon" id="hero-download-icon" aria-hidden="true"></span>
-              <span class="dl-text">
-                <span class="dl-label">Scarica per <span id="hero-download-os">macOS</span></span>
-                <span class="dl-meta" id="hero-download-meta"></span>
-              </span>
-            </a>
-            <button class="btn-download caret" id="hero-download-toggle"
-                    aria-haspopup="menu" aria-expanded="false"
-                    aria-label="Altre piattaforme">
-              <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
-                <path d="M2 4l4 4 4-4" stroke="currentColor" fill="none"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <div class="dl-menu" id="hero-download-menu" role="menu" hidden>
-              <a class="dl-item" data-platform="macos"   role="menuitem"
-                 href="#" rel="noopener">
-                <span class="dl-icon" data-platform-icon="macos"   aria-hidden="true"></span>
-                <span class="dl-item-label">macOS</span>
-                <span class="dl-item-meta"></span>
+          <div class="hero-download-row">
+            <div class="download" data-target="hero">
+              <a class="btn-download primary"
+                 href="#" id="hero-download-primary" rel="noopener">
+                <span class="dl-icon" id="hero-download-icon" aria-hidden="true"></span>
+                <span class="dl-text">
+                  <span class="dl-label">Scarica per <span id="hero-download-os">macOS</span></span>
+                  <span class="dl-meta" id="hero-download-meta"></span>
+                </span>
               </a>
-              <a class="dl-item" data-platform="windows" role="menuitem"
-                 href="#" rel="noopener">
-                <span class="dl-icon" data-platform-icon="windows" aria-hidden="true"></span>
-                <span class="dl-item-label">Windows</span>
-                <span class="dl-item-meta"></span>
-              </a>
-              <a class="dl-item" data-platform="linux"   role="menuitem"
-                 href="#" rel="noopener">
-                <span class="dl-icon" data-platform-icon="linux"   aria-hidden="true"></span>
-                <span class="dl-item-label">Linux</span>
-                <span class="dl-item-meta"></span>
-              </a>
+              <button class="btn-download caret" id="hero-download-toggle"
+                      aria-haspopup="menu" aria-expanded="false"
+                      aria-label="Altre piattaforme">
+                <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
+                  <path d="M2 4l4 4 4-4" stroke="currentColor" fill="none"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="dl-menu" id="hero-download-menu" role="menu" hidden>
+                <a class="dl-item" data-platform="macos" role="menuitem"
+                   href="#" rel="noopener">
+                  <span class="dl-icon" data-platform-icon="macos" aria-hidden="true"></span>
+                  <span class="dl-item-label">macOS</span>
+                  <span class="dl-item-meta"></span>
+                </a>
+                <a class="dl-item" data-platform="windows" role="menuitem"
+                   href="#" rel="noopener">
+                  <span class="dl-icon" data-platform-icon="windows" aria-hidden="true"></span>
+                  <span class="dl-item-label">Windows</span>
+                  <span class="dl-item-meta"></span>
+                </a>
+                <a class="dl-item" data-platform="linux" role="menuitem"
+                   href="#" rel="noopener">
+                  <span class="dl-icon" data-platform-icon="linux" aria-hidden="true"></span>
+                  <span class="dl-item-label">Linux</span>
+                  <span class="dl-item-meta"></span>
+                </a>
+              </div>
             </div>
+            <p class="download-count" id="dl-count">Il tool è stato scaricato -- volte in totale!</p>
           </div>
-          <p id="dl-count" style="margin:8px 0 0; font-size:13px; color:#a8a29e;"></p>
         </div>
       </div>
     </section>
@@ -206,19 +208,41 @@
 
   <script src="releases.js"></script>
   <script>
-    const WORKER = "https://download-counter.alessioiodiceuni.workers.dev"
-    const btn = document.getElementById("hero-download-primary")
-    const countEl = document.getElementById("dl-count")
+    const WORKER = "https://download-counter.alessioiodiceuni.workers.dev";
+    const COUNT_PLACEHOLDER = "Il tool è stato scaricato -- volte in totale!";
+    const btn = document.getElementById("hero-download-primary");
+    const countEl = document.getElementById("dl-count");
 
-    fetch(WORKER)
-      .then(r => r.json())
-      .then(d => { countEl.textContent = "Scaricato " + d.count + " volte" })
+    function renderCount(count) {
+      if (!countEl) return;
+      if (!Number.isFinite(count)) {
+        countEl.textContent = COUNT_PLACEHOLDER;
+        return;
+      }
+      countEl.textContent = `Il tool è stato scaricato ${count} volte in totale!`;
+    }
 
-    btn.addEventListener("click", () => {
-      fetch(WORKER, { method: "POST" })
-        .then(r => r.json())
-        .then(d => { countEl.textContent = "Scaricato " + d.count + " volte" })
-    })
+    async function loadCount() {
+      try {
+        const response = await fetch(WORKER);
+        if (!response.ok) throw new Error("Count fetch failed");
+        const data = await response.json();
+        renderCount(Number(data.count));
+      } catch {
+        renderCount(null);
+      }
+    }
+
+    loadCount();
+
+    btn?.addEventListener("click", () => {
+      fetch(WORKER, { method: "POST", keepalive: true })
+        .then((response) => response.ok ? response.json() : null)
+        .then((data) => {
+          if (data) renderCount(Number(data.count));
+        })
+        .catch(() => {});
+    });
   </script>
 </body>
 </html>
