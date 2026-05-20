@@ -48,7 +48,6 @@
               <span class="dl-text">
                 <span class="dl-label">Scarica per <span id="hero-download-os">macOS</span></span>
                 <span class="dl-meta" id="hero-download-meta"></span>
-                <span id="dl-count" style="opacity:0.65; font-size:0.8em;"></span>
               </span>
             </a>
             <button class="btn-download caret" id="hero-download-toggle"
@@ -79,6 +78,7 @@
                 <span class="dl-item-meta"></span>
               </a>
             </div>
+            <p id="dl-count" style="margin:10px 0 0; font-size:13px; color: rgba(255,255,255,0.55);"></p>
           </div>
         </div>
       </div>
@@ -212,12 +212,12 @@
 
     fetch(WORKER)
       .then(r => r.json())
-      .then(d => { countEl.textContent = "· " + d.count + " download" })
+      .then(d => { countEl.textContent = "Scaricato " + d.count + " volte" })
 
     btn.addEventListener("click", () => {
       fetch(WORKER, { method: "POST" })
         .then(r => r.json())
-        .then(d => { countEl.textContent = "· " + d.count + " download" })
+        .then(d => { countEl.textContent = "Scaricato " + d.count + " volte" })
     })
   </script>
 </body>
