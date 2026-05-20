@@ -48,6 +48,7 @@
               <span class="dl-text">
                 <span class="dl-label">Scarica per <span id="hero-download-os">macOS</span></span>
                 <span class="dl-meta" id="hero-download-meta"></span>
+                <span id="dl-count" style="opacity:0.65; font-size:0.8em;"></span>
               </span>
             </a>
             <button class="btn-download caret" id="hero-download-toggle"
@@ -204,5 +205,20 @@
   </footer>
 
   <script src="releases.js"></script>
+  <script>
+    const WORKER = "https://download-counter.alessioiodiceuni.workers.dev"
+    const btn = document.getElementById("hero-download-primary")
+    const countEl = document.getElementById("dl-count")
+
+    fetch(WORKER)
+      .then(r => r.json())
+      .then(d => { countEl.textContent = "· " + d.count + " download" })
+
+    btn.addEventListener("click", () => {
+      fetch(WORKER, { method: "POST" })
+        .then(r => r.json())
+        .then(d => { countEl.textContent = "· " + d.count + " download" })
+    })
+  </script>
 </body>
 </html>
