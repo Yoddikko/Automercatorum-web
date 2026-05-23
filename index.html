@@ -235,14 +235,16 @@
 
     loadCount();
 
-    btn?.addEventListener("click", () => {
+    function incrementCount() {
       fetch(WORKER, { method: "POST", keepalive: true })
         .then((response) => response.ok ? response.json() : null)
         .then((data) => {
           if (data) renderCount(Number(data.count));
         })
         .catch(() => {});
-    });
+    }
+
+    btn?.addEventListener("click", incrementCount);
   </script>
 </body>
 </html>

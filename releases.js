@@ -176,8 +176,12 @@ function wireMenuToggle(toggle, menu) {
       toggle.setAttribute("aria-expanded", "true");
     }
   });
-  // Clicking an item closes the menu (after the navigation kicks in).
-  menu.addEventListener("click", () => {
+  // Clicking an item closes the menu and bumps the download counter for valid assets.
+  menu.addEventListener("click", (e) => {
+    const item = e.target.closest(".dl-item");
+    if (item && !item.hasAttribute("aria-disabled") && typeof incrementCount === "function") {
+      incrementCount();
+    }
     setTimeout(closeAllMenus, 0);
   });
 }
